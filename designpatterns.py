@@ -190,3 +190,18 @@ def main():
     wrapped.save({"cpu": 80})
 
     print("\n6. SINGLETON")
+    config1 = AppConfig()
+    config2 = AppConfig()
+    print("Same instance:", config1 is config2)
+
+    print("\n7. BUILDER")
+    inference_config = (InferenceConfigBuilder()
+                        .set_model("Llama")
+                        .set_batch_size(32)
+                        .set_gpu_count(4)
+                        .build())
+    print(inference_config)
+
+
+if __name__ == "__main__":
+    main()
